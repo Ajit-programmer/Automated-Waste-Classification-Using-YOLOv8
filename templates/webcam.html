@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webcam Detection - Waste Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                    <circle cx="20" cy="20" r="18" fill="#28a745" opacity="0.2"/>
+                    <path d="M20 8L28 15L26 25L20 32L14 25L12 15L20 8Z" fill="#28a745"/>
+                </svg>
+                <h1>Waste Detection AI</h1>
+            </div>
+            <nav>
+                <a href="/">Upload</a>
+                <a href="/webcam" class="active">Webcam</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Real-Time Webcam Detection</h2>
+            <p>Live waste detection using your webcam</p>
+        </section>
+
+        <!-- Webcam Section -->
+        <section class="webcam-section">
+            <div class="webcam-container">
+                <img id="webcamStream" src="{{ url_for('video_feed') }}" alt="Webcam Stream">
+            </div>
+            
+            <div class="webcam-controls">
+                <button id="toggleStream" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <rect x="2" y="5" width="16" height="10" rx="2" stroke="white" stroke-width="2"/>
+                        <circle cx="10" cy="10" r="2" fill="white"/>
+                    </svg>
+                    Start Camera
+                </button>
+                <button id="captureBtn" class="btn btn-secondary" disabled>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <circle cx="10" cy="10" r="7" stroke="white" stroke-width="2"/>
+                        <circle cx="10" cy="10" r="4" fill="white"/>
+                    </svg>
+                    Capture
+                </button>
+            </div>
+
+            <div class="info-box">
+                <h3>How it works:</h3>
+                <ul>
+                    <li>Click "Start Camera" to begin real-time detection</li>
+                    <li>Hold waste items in front of the camera</li>
+                    <li>The AI will automatically detect and classify them</li>
+                    <li>Detection results are shown in real-time with colored boxes</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Category Info -->
+        <section class="category-info">
+            <h2>Waste Categories</h2>
+            <div class="category-grid">
+                <div class="category-card recyclable">
+                    <div class="category-icon">♻️</div>
+                    <h3>Recyclable</h3>
+                    <ul>
+                        <li>Cardboard boxes</li>
+                        <li>Plastic bottles</li>
+                        <li>Aluminum cans</li>
+                        <li>Paper</li>
+                    </ul>
+                </div>
+                <div class="category-card non-recyclable">
+                    <div class="category-icon">🗑️</div>
+                    <h3>Non-Recyclable</h3>
+                    <ul>
+                        <li>Plastic bags</li>
+                        <li>Straws</li>
+                        <li>Styrofoam</li>
+                        <li>Dirty paper</li>
+                    </ul>
+                </div>
+                <div class="category-card hazardous">
+                    <div class="category-icon">⚠️</div>
+                    <h3>Hazardous</h3>
+                    <ul>
+                        <li>Batteries</li>
+                        <li>Light bulbs</li>
+                        <li>Chemicals</li>
+                        <li>Paint</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>Powered by YOLOv8 | Built with Flask</p>
+            <div class="category-legend">
+                <span class="legend-item recyclable">■ Recyclable</span>
+                <span class="legend-item non-recyclable">■ Non-Recyclable</span>
+                <span class="legend-item hazardous">■ Hazardous</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='webcam.js') }}"></script>
+</body>
+</html>
